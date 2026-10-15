@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+
+# Windows / OS
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/

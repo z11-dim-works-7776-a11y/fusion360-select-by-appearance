@@ -1,0 +1,13 @@
+{
+	"autodeskProduct":	"Fusion",
+	"type":	"addin",
+	"author":	"J118",
+	"description":	{
+		"":	"使用中の外観（色）を自動認識してチェックボックスで選択し、該当フェースを選択状態にします。\nソリッドタブ > 修正パネルから起動できます。\nCAMでのパス選択時の製造支援としてお使いください。"
+	},
+	"version":	"2.00",
+	"runOnStartup":	false,
+	"supportedOS":	"windows|mac",
+	"editEnabled":	true,
+	"iconFilename":	"AddInIcon.svg"
+}

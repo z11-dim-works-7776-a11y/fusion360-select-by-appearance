@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外観名で選択 - 取扱説明書</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00b4d8;
+            --secondary: #0077b6;
+            --dark-bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Noto Sans JP', sans-serif;
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #020617 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 90%;
+            margin: 40px auto;
+            padding: 40px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .version-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            color: #e2e8f0;
+        }
+
+        h2::before {
+            content: '';
+            display: block;
+            width: 8px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 36px;
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent);
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .feature-list li strong {
+            color: var(--text-main);
+        }
+
+        .step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 12px rgba(0, 180, 216, 0.3);
+        }
+
+        .step-content {
+            padding-top: 6px;
+        }
+
+        .step-content h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+        }
+
+        .step-content p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        .note {
+            display: flex;
+            gap: 16px;
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 4px solid #f59e0b;
+            padding: 16px 20px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 30px;
+        }
+
+        .note-icon {
+            font-size: 1.5rem;
+        }
+
+        .note-text {
+            font-size: 0.95rem;
+            color: #fcd34d;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ツールバーの見た目を模した装飾 */
+        .toolbar-mockup {
+            background: #1e293b;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 10px;
+            border: 1px solid #334155;
+        }
+
+        .toolbar-btn {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #cbd5e1;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="version-badge">Version 2.00</div>
+            <h1>外観名で選択</h1>
+            <p class="subtitle">Fusion 360 アドイン - モデルの「色（外観）」からフェースを自動選択</p>
+        </header>
+
+        <div class="section">
+            <h2>アドインの特長</h2>
+            <div class="card">
+                <ul class="feature-list">
+                    <li><strong>外観の自動リスト化</strong>: コンポーネント、ボディ、フェースのいずれに適用されているかにかかわらず、モデル内で使用されている外観（色）を自動で認識し、一覧表示します。</li>
+                    <li><strong>直感的なチェックボックスUI</strong>: 文字を入力する手間なく、チェックボックスから選ぶだけで操作できます（複数選択対応）。</li>
+                    <li><strong>リアルタイムプレビュー</strong>: チェックを入れた瞬間に、対応するフェースが青くハイライトされます。</li>
+                    <li><strong>CAMの製造支援</strong>: 色分けしたフェースを一括で選択セット化し、ツールパスの選択等に活用できます。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>使い方</h2>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>コマンドの起動</h3>
+                    <p>Fusion 360 の「ソリッド」タブを開き、「修正」パネルの一番下にある「外観名で選択」ボタンをクリックします。</p>
+                    <div class="toolbar-mockup">
+                        <span style="color: #94a3b8; font-size: 0.8rem;">ソリッド > 修正</span>
+                        <div class="toolbar-btn">🎨 外観名で選択</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>外観をチェックする</h3>
+                    <p>表示されたダイアログには、現在デザインに適用されている外観の一覧がチェックボックスで並んでいます。<br>選択したい色のチェックボックスをオンにしてください。</p>
+                </div>
+            </div>
+
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>プレビューの確認と確定</h3>
+                    <p>チェックを入れると同時に画面上で該当するフェースが青く選択状態になります。対象箇所を確認し、問題なければ「OK」をクリックして選択を確定します。（「キャンセル」を押すと選択状態は解除されます）</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="note">
+            <div class="note-icon">💡</div>
+            <div class="note-text">
+                <strong>Tips:</strong><br>
+                このアドインを実行する前に、あらかじめ任意の外観（ペイントやプラスチックなど）を適用しておいてください。<br>
+                ※外観は<strong>「コンポーネント」「ボディ」「フェース」のいずれに適用しても正しく認識・対応</strong>します。外観が一つも使われていない場合は一覧に表示されません。
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
